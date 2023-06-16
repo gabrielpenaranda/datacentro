@@ -15,16 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import index, sistema
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('accounts/login/', include('django.contrib.auth.urls'), name='login'),
-    path('admin/', admin.site.urls),
-    path('', index, name='index'),
-    path('sistema/', sistema, name='sistema'),
-    path('base/', include('apps.base.urls', namespace='base')),
-    path('terceros/', include('apps.terceros.urls', namespace='terceros')),
-    path('fdv/', include('apps.fdv.urls', namespace='fdv')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('djadmin/', admin.site.urls),
+    path('', include('apps.core.urls', namespace='core')),
+    path('admin/base/', include('apps.base.urls', namespace='base')),
+    path('admin/terceros/', include('apps.terceros.urls', namespace='terceros')),
+    path('admin/fdv/', include('apps.fdv.urls', namespace='fdv')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

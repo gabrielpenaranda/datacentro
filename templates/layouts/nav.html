@@ -3,11 +3,11 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{% url 'index' %}"><img class="img-fluid mx-auto" src="{% static 'img/datacentro.png' %}" alt="Datacentro" width="200"></a>
+    <a class="navbar-brand" href="{% url 'core:core-sistema' %}"><img class="img-fluid mx-auto" src="{% static 'img/datacentro.png' %}" alt="Datacentro" width="200"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <div class="collapse navbar-collapse justify-content-end mt-4 me-3" id="navbarNavDropdown">
       <ul class="navbar-nav">
         {% comment %} <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
@@ -69,7 +69,16 @@
             <li><a class="dropdown-item fs-7" href="{% url 'fdv:ficha-index' %}">Ficha de Tercero</a></li>
           </ul>
         </li>
+        {% if request.user.is_authenticated %}
+        <div class="text-end">
+          <a href="{% url 'logout' %}"><button type="button" class="btn btn-outline-primary">Salir</button></a>
+        </div>
+      {% endif %}
+
       </ul>
+     
+      
+
     </div>
   </div>
 </nav>

@@ -1,0 +1,19 @@
+{% extends 'layouts/layout-registration.html' %}
+
+
+{% block content %}
+    Login
+
+    <form action="" method="POST">
+        {% csrf_token %}
+
+        <input type="text" name="username" id="username" placeholder="Nombre de usuario">
+        <br>
+        <input type="password" name="password" id="password" placeholder="Contraseña">
+
+        <br>
+        <button type="submit">Iniciar sesión</button>
+
+    </form>
+{% endblock content %}
+    
