@@ -12,7 +12,7 @@ from .views import (
 )
 
 
-app_name = 'fdv'
+app_name = 'crm'
 
 urlpatterns = [
     path('tipogestion', TipoGestionIndex.as_view(), name='tipogestion-index'),

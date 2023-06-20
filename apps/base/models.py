@@ -69,7 +69,28 @@ class Actividad(models.Model):
 
     def __str__(self):
         return "%s" % (self.nombre)
+    
 
+class Segmento(models.Model):
+    segmento = models.CharField('Segmento', max_length=50, null=False, blank=False)
+    descripcion = models.TextField("Descripción")
+    created_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        db_table = "segmentos"
+        verbose_name = "Segmento"
+        verbose_name_plural = "Segmentos"
+        ordering = ["nombre"]
+        
+    def save(self, force_insert=False, force_update=False):
+        self.nombre = self.nombre.upper()
+        self.descripcion = self.descripcion.upper()
+        super(Segmento, self).save(force_insert, force_update)
+
+    def __str__(self):
+        return "%s" % (self.nombre)
+    
 
 class Pais(models.Model):
     id = models.BigAutoField(primary_key=True)

@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     
     # apps
     'apps.core',
-    'apps.fdv',
+    'apps.crm',
     'apps.terceros',
     'apps.base',
     
