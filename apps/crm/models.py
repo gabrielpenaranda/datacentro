@@ -6,7 +6,7 @@ from apps.terceros.models import Tercero
 
 class Etapa(models.Model):
     id = models.BigAutoField(primary_key=True)
-    nombre = models.CharField(verbose_name="Nombre",
+    etapa = models.CharField(verbose_name="Nombre",
                               max_length=50, null=False, blank=False)
     descripcion = models.CharField(
         verbose_name="Descripción", max_length=100, null=False, blank=False)
@@ -19,15 +19,15 @@ class Etapa(models.Model):
         db_table = "etapas"
         verbose_name = "Etapa"
         verbose_name_plural = "Etapas"
-        ordering = ["porcentaje", "nombre"]
+        ordering = ["porcentaje", "etapa"]
 
     def save(self, force_insert=False, force_update=False, **kwargs):
-        self.nombre = self.nombre.upper()
+        self.etapa = self.etapa.upper()
         self.descripcion = self.descripcion.upper()
         super(Etapa, self).save(force_insert, force_update)
 
     def __str__(self):
-        return "%s %s %s" % (self.porcentaje, self.nombre, self.descripcion)
+        return "%s %s %s" % (self.porcentaje, self.etapa, self.descripcion)
 
 
 class TipoGestion(models.Model):
@@ -53,7 +53,7 @@ class TipoGestion(models.Model):
 
 class TipoOportunidad(models.Model):
     id = models.BigAutoField(primary_key=True)
-    nombre = models.CharField(verbose_name="Nombre",
+    tipo_oportunidad = models.CharField(verbose_name="Nombre",
                               max_length=50, null=False, blank=False)
     descripcion = models.TextField(
         verbose_name="Descripción", null=False, blank=True)
@@ -64,15 +64,15 @@ class TipoOportunidad(models.Model):
         db_table = "tipooportunidades"
         verbose_name = "Tipo de oportunidad"
         verbose_name_plural = "Tipos de oportunidad"
-        ordering = ["nombre"]
+        ordering = ["tipo_oportunidad"]
 
     def save(self, force_insert=False, force_update=False, **kwargs):
-        self.nombre = self.nombre.upper()
+        self.tipo_oportunidad = self.tipo_oportunidad.upper()
         self.descripcion = self.descripcion.upper()
         super(TipoOportunidad, self).save(force_insert, force_update)
 
     def __str__(self):
-        return "%s %s" % (self.nombre, self.descripcion)
+        return "%s %s" % (self.tipo_oportunidad, self.descripcion)
 
 
 class Gestion(models.Model):
@@ -107,7 +107,7 @@ class Gestion(models.Model):
 
 class Oportunidad(models.Model):
     id = models.BigAutoField(primary_key=True)
-    nombre = models.CharField(verbose_name="Nombre",
+    oportunidad = models.CharField(verbose_name="Nombre",
                               max_length=50, null=False, blank=False)
     descripcion = models.TextField(
         verbose_name="Descripción", null=False, blank=False)
@@ -133,17 +133,17 @@ class Oportunidad(models.Model):
         db_table = "oportunidades"
         verbose_name = "Oportunidad"
         verbose_name_plural = "Oportunidades"
-        ordering = ["terceros", "nombre"]
+        ordering = ["terceros", "oportunidad"]
 
     def save(self, force_insert=False, force_update=False, **kwargs):
-        self.nombre = self.nombre.upper()
+        self.oportunidad = self.oportunidad.upper()
         self.descripcion = self.descripcion.upper()
         self.notas = self.notas.upper()
         self.status = self.status.upper()
         super(Oportunidad, self).save(force_insert, force_update)
 
     def __str__(self):
-        return "%s %s %s %s %s %s" % (self.terceros, self.nombre, self.descripcion, self.status, self.tipooportunidades,
+        return "%s %s %s %s %s %s" % (self.terceros, self.oportunidad, self.descripcion, self.status, self.tipooportunidades,
                                       self.etapas)
 
 

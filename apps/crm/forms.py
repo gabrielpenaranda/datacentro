@@ -26,17 +26,17 @@ class TipoGestionForm(forms.ModelForm):
 class TipoOportunidadForm(forms.ModelForm):
     class Meta:
         model = TipoOportunidad
-        fields = ["nombre", "descripcion"]
+        fields = ["tipo_oportunidad", "descripcion"]
         labels = {
-            'nombre': 'Tipo de oportunidad',
+            'tipo_oportunidad': 'Tipo de oportunidad',
             'descripción': 'Descripción',
         }
         widgets = {
-            'nombre': forms.TextInput(
+            'tipo_oportunidad': forms.TextInput(
                 attrs={
                     'class': 'form-control form-control-sm mb-2',
                     'placeholder': 'Ingrese el tipo de oportunidad',
-                    'id': 'nombre'
+                    'id': 'tipo_oportunidad'
                 }
             ),
             'descripcion': forms.TextInput(
@@ -52,18 +52,18 @@ class TipoOportunidadForm(forms.ModelForm):
 class EtapaForm(forms.ModelForm):
     class Meta:
         model = Etapa
-        fields = ["nombre", "descripcion", "porcentaje"]
+        fields = ["etapa", "descripcion", "porcentaje"]
         labels = {
-            'nombre': 'Etapa',
+            'etapa': 'Etapa',
             'descripción': 'Descripción',
             'porcentaje': 'Porcentaje',
         }
         widgets = {
-            'nombre': forms.TextInput(
+            'etapa': forms.TextInput(
                 attrs={
                     'class': 'form-control form-control-sm mb-2',
                     'placeholder': 'Ingrese el nombre de la etapa',
-                    'id': 'nombre'
+                    'id': 'etapa'
                 }
             ),
             'descripcion': forms.TextInput(
@@ -89,10 +89,10 @@ class EtapaForm(forms.ModelForm):
 class OportunidadForm(forms.ModelForm):
     class Meta:
         model = Oportunidad
-        fields = ["nombre", "descripcion", "notas", "cerrada",
+        fields = ["oportunidad", "descripcion", "notas", "cerrada",
                   "status", "tipooportunidades", "terceros", "etapas"]
         labels = {
-            'nombre': 'Nombre de la oportunidad',
+            'oportunidad': 'Nombre de la oportunidad',
             'descripción': 'Descripción',
             'notas': 'Notas',
             'cerrada': 'Cerrada',
@@ -102,11 +102,11 @@ class OportunidadForm(forms.ModelForm):
             'etapas': 'Etapa',
         }
         widgets = {
-            'nombre': forms.TextInput(
+            'oportunidad': forms.TextInput(
                 attrs={
                     'class': 'form-control form-control-sm mb-2',
                     'placeholder': 'Ingrese el nombre de la oportunidad',
-                    'id': 'nombre'
+                    'id': 'oportunidad'
                 }
             ),
             'descripcion': forms.TextInput(

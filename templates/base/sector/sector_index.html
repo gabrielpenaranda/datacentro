@@ -37,7 +37,7 @@
                           {% for sector in sectores %}
                           <tr>
                               <td class="fs-7">
-                                  {{ sector.nombre }}
+                                  {{ sector.sector }}
                               </td>
                               <td class="text-center">
                                   <a class="btn btn-outline-primary btn-sm fs-7" href="{% url 'base:sector-edit' sector.id %}"><i class="fas fa-edit"></i></a>

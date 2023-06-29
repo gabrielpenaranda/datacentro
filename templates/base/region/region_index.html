@@ -37,7 +37,7 @@
                           {% for region in regiones %}
                           <tr>
                               <td class="fs-7">
-                                  {{ region.nombre }}
+                                  {{ region.region }}
                               </td>
                               <td class="text-center">
                                   <a class="btn btn-outline-primary btn-sm fs-7" href="{% url 'base:region-edit' region.id %}"><i class="fas fa-edit"></i></a>

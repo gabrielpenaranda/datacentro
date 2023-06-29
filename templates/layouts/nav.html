@@ -41,9 +41,9 @@
             <li><a class="dropdown-item fs-7" href="{% url 'terceros:tipotercero-index' %}">Tipo de Tercero</a></li>
             <li><a class="dropdown-item fs-7" href="{% url 'terceros:tipopersona-index' %}">Tipo de Persona</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item fs-7" href="{% url 'fdv:tipogestion-index' %}">Tipo de Gestión</a></li>
-            <li><a class="dropdown-item fs-7 text" href="{% url 'fdv:tipooportunidad-index' %}">Tipo de Oportunidad</a></li>
-            <li><a class="dropdown-item fs-7 text" href="{% url 'fdv:etapa-index' %}">Etapa</a></li>
+            <li><a class="dropdown-item fs-7" href="{% url 'crm:tipogestion-index' %}">Tipo de Gestión</a></li>
+            <li><a class="dropdown-item fs-7 text" href="{% url 'crm:tipooportunidad-index' %}">Tipo de Oportunidad</a></li>
+            <li><a class="dropdown-item fs-7 text" href="{% url 'crm:etapa-index' %}">Etapa</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -61,17 +61,17 @@
             Gestión
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item fs-7" href="{% url 'fdv:captacion-index' %}">Captación</a></li>
+            <li><a class="dropdown-item fs-7" href="{% url 'crm:captacion-index' %}">Captación</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item fs-7" href="{% url 'fdv:oportunidad-index' %}">Oportunidad</a></li>
-            <li><a class="dropdown-item fs-7" href="{% url 'fdv:gestion-index' %}">Gestión</a></li>
-            <li><a class="dropdown-item fs-7" href="{% url 'fdv:documento-index' %}">Documento</a></li>
-            <li><a class="dropdown-item fs-7" href="{% url 'fdv:ficha-index' %}">Ficha de Tercero</a></li>
+            <li><a class="dropdown-item fs-7" href="{% url 'crm:oportunidad-index' %}">Oportunidad</a></li>
+            <li><a class="dropdown-item fs-7" href="{% url 'crm:gestion-index' %}">Gestión</a></li>
+            <li><a class="dropdown-item fs-7" href="{% url 'crm:documento-index' %}">Documento</a></li>
+            <li><a class="dropdown-item fs-7" href="{% url 'crm:ficha-index' %}">Ficha de Tercero</a></li>
           </ul>
         </li>
         {% if request.user.is_authenticated %}
         <div class="text-end">
-          <a href="{% url 'logout' %}"><button type="button" class="btn btn-outline-primary">Salir</button></a>
+          <a href="{% url 'logout' %}"><button type="button" class="btn-sm btn-outline-primary">Salir</button></a>
         </div>
       {% endif %}
 
@@ -82,3 +82,6 @@
     </div>
   </div>
 </nav>
+
+
+

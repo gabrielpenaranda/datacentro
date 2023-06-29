@@ -38,10 +38,10 @@
                         {% for ramo in ramos %}
                           <tr>
                               <td class="fs-7">
-                                  {{ ramo.nombre }}
+                                  {{ ramo.ramo }}
                               </td>
                               <td class="fs-7">
-                                  {{ ramo.sector.nombre }}
+                                  {{ ramo.sector.ramo }}
                               </td>
                               <td class="text-center">
                                   <a class="btn btn-outline-primary btn-sm fs-7" href="{% url 'base:ramo-edit' ramo.id %}"><i class="fas fa-edit"></i></a>

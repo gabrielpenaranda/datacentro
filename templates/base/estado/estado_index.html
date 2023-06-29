@@ -7,13 +7,13 @@
 {% endblock title %}
 
 {% block content %}
-<div class="container">
+<div class="container mt-5">
 
     <div class="row">
         <div class="col-12 col-sm-12 col-md-8 offset-md-2">
-          <div class="card border-secondary">
+          <div class="card">
 
-            <div class="card-title text-white bg-secondary">
+            <div class="card-title bg-light">
               <h4 class="text-left m-4 mb-0">Estado</h4>
               <div class="container">
               <div class="row">
@@ -28,8 +28,8 @@
               <table class="table">
                   <thead>
                       <tr>
-                          <th scope="col" class="text-center">Estado</th>
-                          <th scope="col" class="text-center">País</th>
+                          <th scope="col" class="text-left">Estado</th>
+                          <th scope="col" class="text-left">País</th>
                           <th scope="col" class="text-center">Acciones</th>
                       </tr>
                   </thead>
@@ -38,7 +38,7 @@
                           {% for estado in estados %}
                           <tr>
                               <td class="fs-7">
-                                  {{ estado.nombre }}
+                                  {{ estado.estado }}
                               </td>
                               <td class="fs-7">
                                   {{ estado.pais }}

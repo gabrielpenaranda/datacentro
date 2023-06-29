@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'datacentro.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'fdv.sqlite3',
+        'NAME': BASE_DIR / 'crm.sqlite3',
     }
     #'default': {
     #    'ENGINE': 'django.db.backends.mysql',

@@ -16,7 +16,7 @@ from django.urls import reverse_lazy
 
 # TIPO DE GESTION
 class TipoGestionIndex(ListView):
-    template_name = 'fdv/tipogestion/tipogestion_index.html'
+    template_name = 'crm/tipogestion/tipogestion_index.html'
     model = TipoGestion
     paginate_by = 7
     context_object_name = 'tipogestiones'
@@ -24,26 +24,26 @@ class TipoGestionIndex(ListView):
 
 class TipoGestionCreate(CreateView):
     model = TipoGestion
-    template_name = 'fdv/tipogestion/tipogestion_create.html'
+    template_name = 'crm/tipogestion/tipogestion_create.html'
     form_class = TipoGestionForm
-    success_url = reverse_lazy('fdv:tipogestion-index')
+    success_url = reverse_lazy('crm:tipogestion-index')
 
     def get_context_data(self, **kwargs):
         context = super(CreateView, self).get_context_data(**kwargs)
-        context['titulo'] = 'Tipo de GestiÃ³n|Agregar'
-        context['titulo_pagina'] = 'Agregar Tipo de GestiÃ³n'
+        context['titulo'] = 'Tipo de Gestión|Agregar'
+        context['titulo_pagina'] = 'Agregar Tipo de Gestión'
         return context
 
 
 class TipoGestionEdit(UpdateView):
     model = TipoGestion
-    template_name = 'fdv/tipogestion/tipogestion_create.html'
+    template_name = 'crm/tipogestion/tipogestion_create.html'
     form_class = TipoGestionForm
-    success_url = reverse_lazy('fdv:tipogestion-index')
+    success_url = reverse_lazy('crm:tipogestion-index')
 
     def get_context_data(self, **kwargs):
         context = super(UpdateView, self).get_context_data(**kwargs)
-        context['titulo'] = 'Tipo de GestiÃ³n|Editar'
+        context['titulo'] = 'Tipo de Gestión|Editar'
         context['titulo_pagina'] = 'Editar Tipo de GestiÃ³n'
         return context
 
@@ -52,12 +52,12 @@ def tipogestion_delete(request, id):
     tipogestion = TipoGestion.objects.get(id=id)
     if request.method == 'GET':
         contexto = {
-            'titulo_pagina': 'Eliminar Tipo de GestiÃ³n',
-            'titulo': 'Tipo de GestiÃ³n|Eliminar',
-            'ruta': 'fdv:tipogestion-index',
+            'titulo_pagina': 'Eliminar Tipo de Gestión',
+            'titulo': 'Tipo de Gestión|Eliminar',
+            'ruta': 'crm:tipogestion-index',
             'objeto': tipogestion,
         }
-        return render(request, 'fdv/tipogestion/tipogestion_delete.html',
+        return render(request, 'crm/tipogestion/tipogestion_delete.html',
                        contexto)
     else:
         try:
@@ -67,15 +67,15 @@ def tipogestion_delete(request, id):
             class_card = "card border-danger"
             class_title = "card-title text-white bg-danger"
         else:
-            mensaje = 'Tipo de GestiÃ³n eliminada exitosamente'
+            mensaje = 'Tipo de Gestión eliminada exitosamente'
             class_card = "card border-success"
             class_title = "card-title text-white bg-success"
 
         contexto = {
             'titulo_pagina': 'Eliminar Tipo de GestiÃ³n',
             'mensaje': mensaje,
-            'titulo': 'Tipo de GestiÃ³n|Eliminar',
-            'ruta': 'fdv:tipogestion-index',
+            'titulo': 'Tipo de Gestión|Eliminar',
+            'ruta': 'crm:tipogestion-index',
             'objeto': tipogestion,
             'class_card': class_card,
             'class_title': class_title,
@@ -85,7 +85,7 @@ def tipogestion_delete(request, id):
 
 # TIPO DE OPORTUNIDAD
 class TipoOportunidadIndex(ListView):
-    template_name = 'fdv/tipooportunidad/tipooportunidad_index.html'
+    template_name = 'crm/tipooportunidad/tipooportunidad_index.html'
     model = TipoOportunidad
     paginate_by = 7
     context_object_name = 'tipooportunidades'
@@ -93,9 +93,9 @@ class TipoOportunidadIndex(ListView):
 
 class TipoOportunidadCreate(CreateView):
     model = TipoOportunidad
-    template_name = 'fdv/tipooportunidad/tipooportunidad_create.html'
+    template_name = 'crm/tipooportunidad/tipooportunidad_create.html'
     form_class = TipoOportunidadForm
-    success_url = reverse_lazy('fdv:tipooportunidad-index')
+    success_url = reverse_lazy('crm:tipooportunidad-index')
 
     def get_context_data(self, **kwargs):
         context = super(CreateView, self).get_context_data(**kwargs)
@@ -106,9 +106,9 @@ class TipoOportunidadCreate(CreateView):
 
 class TipoOportunidadEdit(UpdateView):
     model = TipoOportunidad
-    template_name = 'fdv/tipooportunidad/tipooportunidad_create.html'
+    template_name = 'crm/tipooportunidad/tipooportunidad_create.html'
     form_class = TipoOportunidadForm
-    success_url = reverse_lazy('fdv:tipooportunidad-index')
+    success_url = reverse_lazy('crm:tipooportunidad-index')
 
     def get_context_data(self, **kwargs):
         context = super(UpdateView, self).get_context_data(**kwargs)
@@ -123,10 +123,10 @@ def tipooportunidad_delete(request, id):
         contexto = {
             'titulo_pagina': 'Eliminar Tipo de Oportunidad',
             'titulo': 'Tipo de Oportunidad|Eliminar',
-            'ruta': 'fdv:tipooportunidad-index',
+            'ruta': 'crm:tipooportunidad-index',
             'objeto': tipooportunidad,
         }
-        return render(request, 'fdv/tipooportunidad/tipooportunidad_delete.html', contexto)
+        return render(request, 'crm/tipooportunidad/tipooportunidad_delete.html', contexto)
     else:
         try:
             tipooportunidad.delete()
@@ -143,7 +143,7 @@ def tipooportunidad_delete(request, id):
             'titulo_pagina': 'Eliminar Tipo de Oportunidad',
             'mensaje': mensaje,
             'titulo': 'Tipo de Oportunidad|Eliminar',
-            'ruta': 'fdv:tipooportunidad-index',
+            'ruta': 'crm:tipooportunidad-index',
             'objeto': tipooportunidad,
             'class_card': class_card,
             'class_title': class_title,
@@ -153,7 +153,7 @@ def tipooportunidad_delete(request, id):
 
 # ETAPA
 class EtapaIndex(ListView):
-    template_name = 'fdv/etapa/etapa_index.html'
+    template_name = 'crm/etapa/etapa_index.html'
     model = Etapa
     paginate_by = 7
     context_object_name = 'etapas'
@@ -161,9 +161,9 @@ class EtapaIndex(ListView):
 
 class EtapaCreate(CreateView):
     model = Etapa
-    template_name = 'fdv/etapa/etapa_create.html'
+    template_name = 'crm/etapa/etapa_create.html'
     form_class = EtapaForm
-    success_url = reverse_lazy('fdv:etapa-index')
+    success_url = reverse_lazy('crm:etapa-index')
 
     def get_context_data(self, **kwargs):
         context = super(CreateView, self).get_context_data(**kwargs)
@@ -174,9 +174,9 @@ class EtapaCreate(CreateView):
 
 class EtapaEdit(UpdateView):
     model = Etapa
-    template_name = 'fdv/etapa/etapa_create.html'
+    template_name = 'crm/etapa/etapa_create.html'
     form_class = EtapaForm
-    success_url = reverse_lazy('fdv:etapa-index')
+    success_url = reverse_lazy('crm:etapa-index')
 
     def get_context_data(self, **kwargs):
         context = super(UpdateView, self).get_context_data(**kwargs)
@@ -191,10 +191,10 @@ def etapa_delete(request, id):
         contexto = {
             'titulo_pagina': 'Eliminar Etapa',
             'titulo': 'Etapa|Eliminar',
-            'ruta': 'fdv:etapa-index',
+            'ruta': 'crm:etapa-index',
             'objeto': etapa,
         }
-        return render(request, 'fdv/etapa/etapa_delete.html', contexto)
+        return render(request, 'crm/etapa/etapa_delete.html', contexto)
     else:
         try:
             etapa.delete()
@@ -211,7 +211,7 @@ def etapa_delete(request, id):
             'titulo_pagina': 'Eliminar Etapa',
             'mensaje': mensaje,
             'titulo': 'Etapa|Eliminar',
-            'ruta': 'fdv:etapa-index',
+            'ruta': 'crm:etapa-index',
             'objeto': etapa,
             'class_card': class_card,
             'class_title': class_title,
@@ -221,7 +221,7 @@ def etapa_delete(request, id):
 
 # OPORTUNIDAD
 class OportunidadIndex(ListView):
-    template_name = 'fdv/oportunidad/oportunidad_index.html'
+    template_name = 'crm/oportunidad/oportunidad_index.html'
     model = Oportunidad
     paginate_by = 7
     context_object_name = 'oportunidades'
@@ -229,9 +229,9 @@ class OportunidadIndex(ListView):
 
 class OportunidadCreate(CreateView):
     model = Oportunidad
-    template_name = 'fdv/oportunidad/oportunidad_create.html'
+    template_name = 'crm/oportunidad/oportunidad_create.html'
     form_class = OportunidadForm
-    success_url = reverse_lazy('fdv:oportunidad-index')
+    success_url = reverse_lazy('crm:oportunidad-index')
 
     def get_context_data(self, **kwargs):
         context = super(CreateView, self).get_context_data(**kwargs)
@@ -242,9 +242,9 @@ class OportunidadCreate(CreateView):
 
 class OportunidadEdit(UpdateView):
     model = Oportunidad
-    template_name = 'fdv/oportunidad/oportunidad_create.html'
+    template_name = 'crm/oportunidad/oportunidad_create.html'
     form_class = OportunidadForm
-    success_url = reverse_lazy('fdv:oportunidad-index')
+    success_url = reverse_lazy('crm:oportunidad-index')
 
     def get_context_data(self, **kwargs):
         context = super(UpdateView, self).get_context_data(**kwargs)
@@ -259,10 +259,10 @@ def oportunidad_delete(request, id):
         contexto = {
             'titulo_pagina': 'Eliminar Oportunidad',
             'titulo': 'Oportunidad|Eliminar',
-            'ruta': 'fdv:oportunidad-index',
+            'ruta': 'crm:oportunidad-index',
             'objeto': oportunidad,
         }
-        return render(request, 'fdv/oportunidad/oportunidad_delete.html', contexto)
+        return render(request, 'crm/oportunidad/oportunidad_delete.html', contexto)
     else:
         try:
             oportunidad.delete()
@@ -279,7 +279,7 @@ def oportunidad_delete(request, id):
             'titulo_pagina': 'Eliminar Oportunidad',
             'mensaje': mensaje,
             'titulo': 'Oportunidad|Eliminar',
-            'ruta': 'fdv:oportunidad-index',
+            'ruta': 'crm:oportunidad-index',
             'objeto': oportunidad,
             'class_card': class_card,
             'class_title': class_title,
@@ -289,7 +289,7 @@ def oportunidad_delete(request, id):
 
 # GESTION
 class GestionIndex(ListView):
-    template_name = 'fdv/gestion/gestion_index.html'
+    template_name = 'crm/gestion/gestion_index.html'
     model = Gestion
     paginate_by = 7
     context_object_name = 'gestiones'
@@ -297,9 +297,9 @@ class GestionIndex(ListView):
 
 class GestionCreate(CreateView):
     model = Gestion
-    template_name = 'fdv/gestion/gestion_create.html'
+    template_name = 'crm/gestion/gestion_create.html'
     form_class = GestionForm
-    success_url = reverse_lazy('fdv:gestion-index')
+    success_url = reverse_lazy('crm:gestion-index')
 
     def get_context_data(self, **kwargs):
         context = super(CreateView, self).get_context_data(**kwargs)
@@ -310,9 +310,9 @@ class GestionCreate(CreateView):
 
 class GestionEdit(UpdateView):
     model = Gestion
-    template_name = 'fdv/gestion/gestion_create.html'
+    template_name = 'crm/gestion/gestion_create.html'
     form_class = GestionForm
-    success_url = reverse_lazy('fdv:gestion-index')
+    success_url = reverse_lazy('crm:gestion-index')
 
     def get_context_data(self, **kwargs):
         context = super(UpdateView, self).get_context_data(**kwargs)
@@ -327,10 +327,10 @@ def gestion_delete(request, id):
         contexto = {
             'titulo_pagina': 'Eliminar GestiÃ³n',
             'titulo': 'GestiÃ³n|Eliminar',
-            'ruta': 'fdv:gestion-index',
+            'ruta': 'crm:gestion-index',
             'objeto': gestion,
         }
-        return render(request, 'fdv/gestion/gestion_delete.html', contexto)
+        return render(request, 'crm/gestion/gestion_delete.html', contexto)
     else:
         try:
             gestion.delete()
@@ -347,7 +347,7 @@ def gestion_delete(request, id):
             'titulo_pagina': 'Eliminar GestiÃ³n',
             'mensaje': mensaje,
             'titulo': 'GestiÃ³n|Eliminar',
-            'ruta': 'fdv:gestion-index',
+            'ruta': 'crm:gestion-index',
             'objeto': gestion,
             'class_card': class_card,
             'class_title': class_title,
@@ -357,7 +357,7 @@ def gestion_delete(request, id):
 
 # DOCUMENTO
 class DocumentoIndex(ListView):
-    template_name = 'fdv/documento/documento_index.html'
+    template_name = 'crm/documento/documento_index.html'
     model = Documento
     paginate_by = 7
     context_object_name = 'documentos'
@@ -365,9 +365,9 @@ class DocumentoIndex(ListView):
 
 class DocumentoCreate(CreateView):
     model = Documento
-    template_name = 'fdv/documento/documento_create.html'
+    template_name = 'crm/documento/documento_create.html'
     form_class = DocumentoForm
-    success_url = reverse_lazy('fdv:documento-index')
+    success_url = reverse_lazy('crm:documento-index')
 
     def get_context_data(self, **kwargs):
         context = super(CreateView, self).get_context_data(**kwargs)
@@ -378,9 +378,9 @@ class DocumentoCreate(CreateView):
 
 class DocumentoEdit(UpdateView):
     model = Documento
-    template_name = 'fdv/documento/documento_create.html'
+    template_name = 'crm/documento/documento_create.html'
     form_class = GestionForm
-    success_url = reverse_lazy('fdv:documento-index')
+    success_url = reverse_lazy('crm:documento-index')
 
     def get_context_data(self, **kwargs):
         context = super(UpdateView, self).get_context_data(**kwargs)
@@ -395,10 +395,10 @@ def documento_delete(request, id):
         contexto = {
             'titulo_pagina': 'Eliminar Documento',
             'titulo': 'Documento|Eliminar',
-            'ruta': 'fdv:documento-index',
+            'ruta': 'crm:documento-index',
             'objeto': documento,
         }
-        return render(request, 'fdv/documento/documento_delete.html', contexto)
+        return render(request, 'crm/documento/documento_delete.html', contexto)
     else:
         try:
             documento.delete()
@@ -415,7 +415,7 @@ def documento_delete(request, id):
             'titulo_pagina': 'Eliminar Documento',
             'mensaje': mensaje,
             'titulo': 'Documento|Eliminar',
-            'ruta': 'fdv:documento-index',
+            'ruta': 'crm:documento-index',
             'objeto': documento,
             'class_card': class_card,
             'class_title': class_title,
@@ -425,7 +425,7 @@ def documento_delete(request, id):
 
 # FICHA
 class FichaIndex(ListView):
-    template_name = 'fdv/ficha/ficha_index.html'
+    template_name = 'crm/ficha/ficha_index.html'
     model = Ficha
     paginate_by = 7
     context_object_name = 'fichas'
@@ -433,9 +433,9 @@ class FichaIndex(ListView):
 
 class FichaCreate(CreateView):
     model = Ficha
-    template_name = 'fdv/ficha/ficha_create.html'
+    template_name = 'crm/ficha/ficha_create.html'
     form_class = FichaForm
-    success_url = reverse_lazy('fdv:ficha-index')
+    success_url = reverse_lazy('crm:ficha-index')
 
     def get_context_data(self, **kwargs):
         context = super(CreateView, self).get_context_data(**kwargs)
@@ -446,9 +446,9 @@ class FichaCreate(CreateView):
 
 class FichaEdit(UpdateView):
     model = Ficha
-    template_name = 'fdv/ficha/ficha_create.html'
+    template_name = 'crm/ficha/ficha_create.html'
     form_class = FichaForm
-    success_url = reverse_lazy('fdv:ficha-index')
+    success_url = reverse_lazy('crm:ficha-index')
 
     def get_context_data(self, **kwargs):
         context = super(UpdateView, self).get_context_data(**kwargs)
@@ -463,10 +463,10 @@ def ficha_delete(request, id):
         contexto = {
             'titulo_pagina': 'Eliminar Ficha',
             'titulo': 'Ficha|Eliminar',
-            'ruta': 'fdv:ficha-index',
+            'ruta': 'crm:ficha-index',
             'objeto': ficha,
         }
-        return render(request, 'fdv/ficha/ficha_delete.html', contexto)
+        return render(request, 'crm/ficha/ficha_delete.html', contexto)
     else:
         try:
             ficha.delete()
@@ -483,7 +483,7 @@ def ficha_delete(request, id):
             'titulo_pagina': 'Eliminar Ficha',
             'mensaje': mensaje,
             'titulo': 'Ficha|Eliminar',
-            'ruta': 'fdv:ficha-index',
+            'ruta': 'crm:ficha-index',
             'objeto': ficha,
             'class_card': class_card,
             'class_title': class_title,
@@ -493,7 +493,7 @@ def ficha_delete(request, id):
 
 # CAPTACION
 class CaptacionIndex(ListView):
-    template_name = 'fdv/captacion/captacion_index.html'
+    template_name = 'crm/captacion/captacion_index.html'
     model = Captacion
     paginate_by = 7
     context_object_name = 'captaciones'
@@ -501,9 +501,9 @@ class CaptacionIndex(ListView):
 
 class CaptacionCreate(CreateView):
     model = Captacion
-    template_name = 'fdv/captacion/captacion_create.html'
+    template_name = 'crm/captacion/captacion_create.html'
     form_class = CaptacionForm
-    success_url = reverse_lazy('fdv:captacion-index')
+    success_url = reverse_lazy('crm:captacion-index')
 
     def get_context_data(self, **kwargs):
         context = super(CreateView, self).get_context_data(**kwargs)
@@ -514,9 +514,9 @@ class CaptacionCreate(CreateView):
 
 class CaptacionEdit(UpdateView):
     model = Captacion
-    template_name = 'fdv/captacion/captacion_create.html'
+    template_name = 'crm/captacion/captacion_create.html'
     form_class = CaptacionForm
-    success_url = reverse_lazy('fdv:captacion-index')
+    success_url = reverse_lazy('crm:captacion-index')
 
     def get_context_data(self, **kwargs):
         context = super(UpdateView, self).get_context_data(**kwargs)
@@ -531,10 +531,10 @@ def captacion_delete(request, id):
         contexto = {
             'titulo_pagina': 'Eliminar CaptaciÃ³n',
             'titulo': 'CaptaciÃ³n|Eliminar',
-            'ruta': 'fdv:captacion-index',
+            'ruta': 'crm:captacion-index',
             'objeto': captacion,
         }
-        return render(request, 'fdv/captacion/captacion_delete.html', contexto)
+        return render(request, 'crm/captacion/captacion_delete.html', contexto)
     else:
         try:
             captacion.delete()
@@ -551,7 +551,7 @@ def captacion_delete(request, id):
             'titulo_pagina': 'Eliminar CaptaciÃ³n',
             'mensaje': mensaje,
             'titulo': 'CaptaciÃ³n|Eliminar',
-            'ruta': 'fdv:captacion-index',
+            'ruta': 'crm:captacion-index',
             'objeto': captacion,
             'class_card': class_card,
             'class_title': class_title,

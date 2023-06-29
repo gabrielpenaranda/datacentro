@@ -24,5 +24,5 @@ urlpatterns = [
     path('', include('apps.core.urls', namespace='core')),
     path('admin/base/', include('apps.base.urls', namespace='base')),
     path('admin/terceros/', include('apps.terceros.urls', namespace='terceros')),
-    path('admin/fdv/', include('apps.fdv.urls', namespace='fdv')),
+    path('admin/crm/', include('apps.crm.urls', namespace='crm')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

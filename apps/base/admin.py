@@ -5,25 +5,25 @@ from .models import Ciudad, Estado, Actividad, Sector, Ramo, Region, Zona, TipoC
 
 @admin.register(Pais)
 class PaisAdmin(admin.ModelAdmin):
-    search_fields = ['nombre']
-    list_display = ['nombre']
+    search_fields = ['pais']
+    list_display = ['pais']
 
 
 @admin.register(Estado)
 class EstadoAdmin(admin.ModelAdmin):
-    search_fields = ['nombre']
-    list_display = ('nombre', 'pais')
+    search_fields = ['estado']
+    list_display = ('estado', 'pais')
 
 
 @admin.register(Ciudad)
 class CiudadAdmin(admin.ModelAdmin):
-    search_fields = ['nombre', 'estado']
-    list_display = ('nombre', 'estado', 'pais')
-    fields = ('nombre', 'estado')
+    search_fields = ['ciudad', 'estado']
+    list_display = ('ciudad', 'estado', 'pais')
+    fields = ('ciudad', 'estado')
     # list_display_links = ['nombre']
     list_editable = ['estado']
     list_filter = ['estado']
-    ordering = ['nombre', 'estado']
+    ordering = ['ciudad', 'estado']
     save_on_top = True
     save_as = True
     list_per_page = 10

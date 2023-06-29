@@ -78,7 +78,7 @@ def ciudad_delete(request, id):
             'mensaje': mensaje,
             'titulo': 'Ciudad|Eliminar',
             'ruta': 'base:ciudad-index',
-            'objeto': ciudad.nombre,
+            'objeto': ciudad.ciudad,
             'class_card': class_card,
             'class_title': class_title,
         }
@@ -146,7 +146,7 @@ def estado_delete(request, id):
             'mensaje': mensaje,
             'titulo': 'Estado|Eliminar',
             'ruta': 'base:estado-index',
-            'objeto': estado.nombre,
+            'objeto': estado.estado,
             'class_card': class_card,
             'class_title': class_title,
         }
@@ -214,7 +214,7 @@ def pais_delete(request, id):
             'mensaje': mensaje,
             'titulo': 'País|Eliminar',
             'ruta': 'base:pais-index',
-            'objeto': pais.nombre,
+            'objeto': pais.pais,
             'class_card': class_card,
             'class_title': class_title,
         }
@@ -420,7 +420,7 @@ def actividad_delete(request, id):
             'mensaje': mensaje,
             'titulo': 'Actividad|Eliminar',
             'ruta': 'base:actividad-index',
-            'objeto': actividad.nombre,
+            'objeto': actividad.actividad,
             'class_card': class_card,
             'class_title': class_title,
         }
@@ -488,7 +488,7 @@ def tipoempresa_delete(request, id):
             'mensaje': mensaje,
             'titulo': 'Tipo de Empresa|Eliminar',
             'ruta': 'base:tipoempresa-index',
-            'objeto': tipoempresa.nombre,
+            'objeto': tipoempresa.tipo_empresa,
             'class_card': class_card,
             'class_title': class_title,
         }
@@ -556,7 +556,7 @@ def tamanoempresa_delete(request, id):
             'mensaje': mensaje,
             'titulo': 'Tamaño de Empresa|Eliminar',
             'ruta': 'base:tamanoempresa-index',
-            'objeto': tamanoempresa.nombre,
+            'objeto': tamanoempresa.tamano_empresa,
             'class_card': class_card,
             'class_title': class_title,
         }
@@ -624,7 +624,7 @@ def tipocapital_delete(request, id):
             'mensaje': mensaje,
             'titulo': 'Tipo de Capital|Eliminar',
             'ruta': 'base:tipocapital-index',
-            'objeto': tipocapital.nombre,
+            'objeto': tipocapital.tipo_capital,
             'class_card': class_card,
             'class_title': class_title,
         }
@@ -760,7 +760,7 @@ def region_delete(request, id):
             'mensaje': mensaje,
             'titulo': 'Región|Eliminar',
             'ruta': 'base:region-index',
-            'objeto': region.nombre,
+            'objeto': region.region,
             'class_card': class_card,
             'class_title': class_title,
         }
@@ -828,7 +828,7 @@ def zona_delete(request, id):
             'mensaje': mensaje,
             'titulo': 'Zona|Eliminar',
             'ruta': 'base:zona-index',
-            'objeto': zona.nombre,
+            'objeto': zona.zona,
             'class_card': class_card,
             'class_title': class_title,
         }

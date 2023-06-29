@@ -74,9 +74,9 @@ class Migration(migrations.Migration):
                 ('status', models.CharField(max_length=10, verbose_name='Status')),
                 ('created_at', models.DateTimeField(auto_now=True)),
                 ('updated_at', models.DateTimeField(auto_now_add=True)),
-                ('etapas', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='fdv.etapa', verbose_name='Etapa')),
+                ('etapas', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='crm.etapa', verbose_name='Etapa')),
                 ('terceros', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='terceros.tercero', verbose_name='Tercero')),
-                ('tipooportunidades', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='fdv.tipooportunidad', verbose_name='Tipo de oportunidad')),
+                ('tipooportunidades', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='crm.tipooportunidad', verbose_name='Tipo de oportunidad')),
             ],
             options={
                 'verbose_name': 'Oportunidad',
@@ -95,7 +95,7 @@ class Migration(migrations.Migration):
                 ('created_at', models.DateTimeField(auto_now=True)),
                 ('updated_at', models.DateTimeField(auto_now_add=True)),
                 ('terceros', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='terceros.tercero', verbose_name='Tercero')),
-                ('tipogestiones', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='fdv.tipogestion', verbose_name='Tipo de gestión')),
+                ('tipogestiones', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='crm.tipogestion', verbose_name='Tipo de gestión')),
             ],
             options={
                 'verbose_name': 'Gestion',
@@ -136,7 +136,7 @@ class Migration(migrations.Migration):
                 ('descripcion', models.CharField(max_length=100, verbose_name='Descripción')),
                 ('created_at', models.DateTimeField(auto_now=True)),
                 ('updated_at', models.DateTimeField(auto_now_add=True)),
-                ('oportunidades', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='fdv.oportunidad', verbose_name='Oportunidad')),
+                ('oportunidades', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='crm.oportunidad', verbose_name='Oportunidad')),
             ],
             options={
                 'verbose_name': 'Documento',

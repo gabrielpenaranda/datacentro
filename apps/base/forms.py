@@ -9,17 +9,17 @@ from .models import (
 class CiudadForm(forms.ModelForm):
     class Meta:
         model = Ciudad
-        fields = ["nombre", "estado"]
+        fields = ["ciudad", "estado"]
         labels = {
-            'nombre': 'Nombre de la ciudad',
+            'ciudad': 'Nombre de la ciudad',
             'estado': 'Estado',
         }
         widgets = {
-            'nombre': forms.TextInput(
+            'ciudad': forms.TextInput(
                 attrs = {
                     'class': 'form-control form-control-sm mb-2',
                     'placeholder': 'Ingrese el nombre de la ciudad',
-                    'id': 'nombre'
+                    'id': 'ciudad'
                 }
             ),
             'estado': forms.Select(
@@ -35,24 +35,24 @@ class CiudadForm(forms.ModelForm):
 class EstadoForm(forms.ModelForm):
     class Meta:
         model = Estado
-        fields = ["nombre", "pais"]
+        fields = ["estado", "pais"]
         labels = {
-            'nombre': 'Nombre del estado',
+            'estado': 'Nombre del estado',
             'pais':  'País',
         }
         widgets = {
-            'nombre': forms.TextInput(
+            'estado': forms.TextInput(
                 attrs = {
                     'class': 'form-control form-control-sm mb-2',
                     'placeholder': 'Ingrese el nombre del estado',
-                    'id': 'nombre'
+                    'id': 'estado'
                 }
             ),
             'pais': forms.Select(
                 attrs = {
                     'class': 'form-select form-select-sm',
                     'placeholder': 'Seleccione país',
-                    'id': 'nombre'
+                    'id': 'pais'
                 }
             )
         }
@@ -61,16 +61,16 @@ class EstadoForm(forms.ModelForm):
 class PaisForm(forms.ModelForm):
     class Meta:
         model = Pais
-        fields = ["nombre"]
+        fields = ["pais"]
         labels = {
-            'nombre': 'Nombre del país',
+            'pais': 'Nombre del país',
         }
         widgets = {
-            'nombre': forms.TextInput(
+            'pais': forms.TextInput(
                 attrs = {
                     'class': 'form-control form-control-sm',
                     'placeholder': 'Ingrese el nombre del país',
-                    'id': 'nombre'
+                    'id': 'pais'
                 }
             )
         }
@@ -79,17 +79,17 @@ class PaisForm(forms.ModelForm):
 class SectorForm(forms.ModelForm):
     class Meta:
         model = Sector
-        fields = ["nombre", "descripcion"]
+        fields = ["sector", "descripcion"]
         labels = {
-            'nombre': 'Nombre del sector',
+            'sector': 'Nombre del sector',
             'descripcion': 'Descripción',
         }
         widgets = {
-            'nombre': forms.TextInput(
+            'sector': forms.TextInput(
                 attrs = {
                     'class': 'form-control form-control-sm mb-2',
                     'placeholder': 'Ingrese el nombre del sector',
-                    'id': 'nombre'
+                    'id': 'sector'
                 }
             ),
             'descripcion': forms.Textarea(
@@ -104,18 +104,18 @@ class SectorForm(forms.ModelForm):
 class RamoForm(forms.ModelForm):
     class Meta:
         model = Ramo
-        fields = ["nombre", "descripcion", "sector"]
+        fields = ["ramo", "descripcion", "sector"]
         labels = {
-            'nombre': 'Nombre del ramo',
+            'ramo': 'Nombre del ramo',
             'descripcion': 'Descripción',
             'sector':  'Sector',
         }
         widgets = {
-            'nombre': forms.TextInput(
+            'ramo': forms.TextInput(
                 attrs = {
                     'class': 'form-control form-control-sm',
                     'placeholder': 'Ingrese el nombre del ramo',
-                    'id': 'nombre'
+                    'id': 'ramo'
                 }
             ),
             'descripcion': forms.Textarea(
@@ -138,18 +138,18 @@ class RamoForm(forms.ModelForm):
 class ActividadForm(forms.ModelForm):
     class Meta:
         model = Actividad
-        fields = ["nombre", "descripcion", "ramo"]
+        fields = ["actividad", "descripcion", "ramo"]
         labels = {
-            'nombre': 'Nombre de la actividad',
+            'actividad': 'Nombre de la actividad',
             'descripcion': 'Descripción',
             'ramo':  'Ramo',
         }
         widgets = {
-            'nombre': forms.TextInput(
+            'actividad': forms.TextInput(
                 attrs = {
                     'class': 'form-control form-control-sm mb-2',
                     'placeholder': 'Ingrese el nombre de la actividad',
-                    'id': 'nombre'
+                    'id': 'actividad'
                 }
             ),
             'descripcion': forms.Textarea(
@@ -172,17 +172,17 @@ class ActividadForm(forms.ModelForm):
 class TipoEmpresaForm(forms.ModelForm):
     class Meta:
         model = TipoEmpresa
-        fields = ["nombre", "descripcion"]
+        fields = ["tipo_empresa", "descripcion"]
         labels = {
             'nombre': 'Tipo de empresa',
             'descripcion': 'Descripción',
         }
         widgets = {
-            'nombre': forms.TextInput(
+            'tipo_empresa': forms.TextInput(
                 attrs = {
                     'class': 'form-control form-control-sm mb-2',
                     'placeholder': 'Ingrese el tipo de empresa',
-                    'id': 'nombre'
+                    'id': 'tipo_empresa'
                 }
             ),
             'descripcion': forms.Textarea(
@@ -198,17 +198,17 @@ class TipoEmpresaForm(forms.ModelForm):
 class TamanoEmpresaForm(forms.ModelForm):
     class Meta:
         model = TamanoEmpresa
-        fields = ["nombre", "descripcion"]
+        fields = ["tamano_empresa", "descripcion"]
         labels = {
-            'nombre': 'Tamaño de empresa',
+            'tamano_empresa': 'Tamaño de empresa',
             'descripcion': 'Descripción',
         }
         widgets = {
-            'nombre': forms.TextInput(
+            'tamano_empresa': forms.TextInput(
                 attrs = {
                     'class': 'form-control form-control-sm mb-2',
                     'placeholder': 'Ingrese el tamaño de empresa',
-                    'id': 'nombre'
+                    'id': 'tamano_empresa'
                 }
             ),
             'descripcion': forms.Textarea(
@@ -224,17 +224,17 @@ class TamanoEmpresaForm(forms.ModelForm):
 class TipoCapitalForm(forms.ModelForm):
     class Meta:
         model = TipoCapital
-        fields = ["nombre", "descripcion"]
+        fields = ["tipo_capital", "descripcion"]
         labels = {
-            'nombre': 'Tipo de capital',
+            'tipo_capital': 'Tipo de capital',
             'descripcion': 'Descripción',
         }
         widgets = {
-            'nombre': forms.TextInput(
+            'tipo_capital': forms.TextInput(
                 attrs = {
                     'class': 'form-control form-control-sm mb-2',
                     'placeholder': 'Ingrese el tipo de capital',
-                    'id': 'nombre'
+                    'id': 'tipo_capital'
                 }
             ),
             'descripcion': forms.Textarea(
@@ -254,7 +254,7 @@ class VendedorForm(forms.ModelForm):
             "nombre",
             "apellido",
             "cedula",
-            "rif",
+            "numero_fiscal",
             "direccion",
             "ciudad",
             "telefono",
@@ -264,7 +264,7 @@ class VendedorForm(forms.ModelForm):
             "nombre": "Nombre",
             "apellido": "Apellido",
             "cedula": "Cédula",
-            "rif": "RIF",
+            "numero_fiscal": "Identificador Fiscal",
             "direccion": "Dirección",
             "ciudad": "Ciudad",
             "telefono": "Teléfono(s)",
@@ -292,11 +292,11 @@ class VendedorForm(forms.ModelForm):
                     'id': 'cedula'
                 }
             ),
-            "rif": forms.TextInput(
+            "numero_fiscal": forms.TextInput(
                 attrs = {
                     'class': 'form-control form-control-sm mb-2',
-                    'placeholder': 'Ingrese el RIF',
-                    'id': 'rif'
+                    'placeholder': 'Ingrese el Identificador Fiscal',
+                    'id': 'numero_fiscal'
                 }
             ),
             "direccion": forms.TextInput(
@@ -333,17 +333,17 @@ class VendedorForm(forms.ModelForm):
 class RegionForm(forms.ModelForm):
     class Meta:
         model = Region
-        fields = ["nombre", "descripcion"]
+        fields = ["region", "descripcion"]
         labels = {
-            'nombre': 'Nombre de la region',
+            'region': 'Nombre de la region',
             'descripcion': 'Descripción',
         }
         widgets = {
-            'nombre': forms.TextInput(
+            'region': forms.TextInput(
                 attrs = {
                     'class': 'form-control form-control-sm mb-2',
                     'placeholder': 'Ingrese el nombre de la region',
-                    'id': 'nombre'
+                    'id': 'region'
                 }
             ),
             'descripcion': forms.Textarea(
@@ -359,18 +359,18 @@ class RegionForm(forms.ModelForm):
 class ZonaForm(forms.ModelForm):
     class Meta:
         model = Zona
-        fields = ["nombre", "descripcion", "region"]
+        fields = ["zona", "descripcion", "region"]
         labels = {
-            'nombre': 'Nombre de la zona',
+            'zona': 'Nombre de la zona',
             'descripcion': 'Descripción',
             'region':  'Región',
         }
         widgets = {
-            'nombre': forms.TextInput(
+            'zona': forms.TextInput(
                 attrs = {
                     'class': 'form-control form-control-sm mb-2',
                     'placeholder': 'Ingrese el nombre de la zona',
-                    'id': 'nombre'
+                    'id': 'zona'
                 }
             ),
             'descripcion': forms.Textarea(
