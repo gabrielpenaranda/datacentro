@@ -20,9 +20,9 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
-    path('djadmin/', admin.site.urls),
+    path('admin/', admin.site.urls),
     path('', include('apps.core.urls', namespace='core')),
-    path('admin/base/', include('apps.base.urls', namespace='base')),
-    path('admin/terceros/', include('apps.terceros.urls', namespace='terceros')),
-    path('admin/crm/', include('apps.crm.urls', namespace='crm')),
+    path('base/', include('apps.base.urls', namespace='base')),
+    path('terceros/', include('apps.terceros.urls', namespace='terceros')),
+    path('crm/', include('apps.crm.urls', namespace='crm')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

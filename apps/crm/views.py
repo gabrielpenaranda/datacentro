@@ -44,7 +44,7 @@ class TipoGestionEdit(UpdateView):
     def get_context_data(self, **kwargs):
         context = super(UpdateView, self).get_context_data(**kwargs)
         context['titulo'] = 'Tipo de Gestión|Editar'
-        context['titulo_pagina'] = 'Editar Tipo de GestiÃ³n'
+        context['titulo_pagina'] = 'Editar Tipo de Gestión'
         return context
 
 
@@ -72,7 +72,7 @@ def tipogestion_delete(request, id):
             class_title = "card-title text-white bg-success"
 
         contexto = {
-            'titulo_pagina': 'Eliminar Tipo de GestiÃ³n',
+            'titulo_pagina': 'Eliminar Tipo de Gestión',
             'mensaje': mensaje,
             'titulo': 'Tipo de Gestión|Eliminar',
             'ruta': 'crm:tipogestion-index',
@@ -303,8 +303,8 @@ class GestionCreate(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super(CreateView, self).get_context_data(**kwargs)
-        context['titulo'] = 'GestiÃ³n|Agregar'
-        context['titulo_pagina'] = 'Agregar GestiÃ³n'
+        context['titulo'] = 'Gestión|Agregar'
+        context['titulo_pagina'] = 'Agregar Gestión'
         return context
 
 
@@ -316,8 +316,8 @@ class GestionEdit(UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super(UpdateView, self).get_context_data(**kwargs)
-        context['titulo'] = 'GestiÃ³n|Editar'
-        context['titulo_pagina'] = 'Editar GestiÃ³n'
+        context['titulo'] = 'Gestión|Editar'
+        context['titulo_pagina'] = 'Editar Gestión'
         return context
 
 
@@ -325,8 +325,8 @@ def gestion_delete(request, id):
     gestion = Gestion.objects.get(id=id)
     if request.method == 'GET':
         contexto = {
-            'titulo_pagina': 'Eliminar GestiÃ³n',
-            'titulo': 'GestiÃ³n|Eliminar',
+            'titulo_pagina': 'Eliminar Gestión',
+            'titulo': 'Gestión|Eliminar',
             'ruta': 'crm:gestion-index',
             'objeto': gestion,
         }
@@ -339,14 +339,14 @@ def gestion_delete(request, id):
             class_card = "card border-danger"
             class_title = "card-title text-white bg-danger"
         else:
-            mensaje = 'GestiÃ³n eliminada exitosamente'
+            mensaje = 'Gestión eliminada exitosamente'
             class_card = "card border-success"
             class_title = "card-title text-white bg-success"
 
         contexto = {
-            'titulo_pagina': 'Eliminar GestiÃ³n',
+            'titulo_pagina': 'Eliminar Gestión',
             'mensaje': mensaje,
-            'titulo': 'GestiÃ³n|Eliminar',
+            'titulo': 'Gestión|Eliminar',
             'ruta': 'crm:gestion-index',
             'objeto': gestion,
             'class_card': class_card,
@@ -507,8 +507,8 @@ class CaptacionCreate(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super(CreateView, self).get_context_data(**kwargs)
-        context['titulo'] = 'CaptaciÃ³n|Agregar'
-        context['titulo_pagina'] = 'Agregar CaptaciÃ³n'
+        context['titulo'] = 'Captación|Agregar'
+        context['titulo_pagina'] = 'Agregar Captación'
         return context
 
 
@@ -520,8 +520,8 @@ class CaptacionEdit(UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super(UpdateView, self).get_context_data(**kwargs)
-        context['titulo'] = 'CaptaciÃ³n|Editar'
-        context['titulo_pagina'] = 'Editar CaptaciÃ³n'
+        context['titulo'] = 'Captación|Editar'
+        context['titulo_pagina'] = 'Editar Captación'
         return context
 
 
@@ -529,8 +529,8 @@ def captacion_delete(request, id):
     captacion = Captacion.objects.get(id=id)
     if request.method == 'GET':
         contexto = {
-            'titulo_pagina': 'Eliminar CaptaciÃ³n',
-            'titulo': 'CaptaciÃ³n|Eliminar',
+            'titulo_pagina': 'Eliminar Captación',
+            'titulo': 'Captación|Eliminar',
             'ruta': 'crm:captacion-index',
             'objeto': captacion,
         }
@@ -539,18 +539,18 @@ def captacion_delete(request, id):
         try:
             captacion.delete()
         except:
-            mensaje = 'No puede eliminar CaptaciÃ³n, tiene registros asociados'
+            mensaje = 'No puede eliminar Captación, tiene registros asociados'
             class_card = "card border-danger"
             class_title = "card-title text-white bg-danger"
         else:
-            mensaje = 'CaptaciÃ³n eliminada exitosamente'
+            mensaje = 'Captación eliminada exitosamente'
             class_card = "card border-success"
             class_title = "card-title text-white bg-success"
 
         contexto = {
-            'titulo_pagina': 'Eliminar CaptaciÃ³n',
+            'titulo_pagina': 'Eliminar Captación',
             'mensaje': mensaje,
-            'titulo': 'CaptaciÃ³n|Eliminar',
+            'titulo': 'Captación|Eliminar',
             'ruta': 'crm:captacion-index',
             'objeto': captacion,
             'class_card': class_card,
