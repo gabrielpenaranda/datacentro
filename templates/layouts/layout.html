@@ -17,12 +17,17 @@
     {% endblock styles %}
 </head>
 <body>
+    
     {% block nav %}
         {% include 'layouts/nav.html' %}
     {% endblock nav %}
+
     <div id="app">
         {% block content %}{% endblock content %}
     </div>
+        
+    
+    
 
     <!-- Scripts -->
     {% block scripts %}
