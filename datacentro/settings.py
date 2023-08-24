@@ -11,10 +11,10 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-# import pymysql
+import pymysql
 
-# pymysql.install_as_MySQLdb()
-# pymysql.version_info = (1, 4, 2, "final", 0)
+pymysql.install_as_MySQLdb()
+pymysql.version_info = (1, 4, 3, "final", 0)
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -86,18 +86,18 @@ WSGI_APPLICATION = 'datacentro.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #    'ENGINE': 'django.db.backends.sqlite3',
+    #    'NAME': BASE_DIR / 'crm.sqlite3',
+    # }
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'crm.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'crmdb',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
-    #'default': {
-    #    'ENGINE': 'django.db.backends.mysql',
-    #    'NAME': 'fdvdb',
-    #    'USER': 'root',
-    #    'PASSWORD': '',
-    #    'HOST': 'localhost',
-    #    'PORT': '3306',
-    #}
 }
 
 
@@ -162,5 +162,5 @@ LOGOUT_REDIRECT_URL = 'index'
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Redireccion de login y logout
-LOGIN_REDIRECT_URL = 'core:core-sistema'
+LOGIN_REDIRECT_URL = 'core:core-index'
 LOGOUT_REDIRECT_URL = 'core:core-index'

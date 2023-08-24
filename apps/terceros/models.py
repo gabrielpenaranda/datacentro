@@ -45,6 +45,15 @@ class TipoTercero(models.Model):
 
 
 class Tercero(models.Model):
+    
+    class Tipo(models.TextChoices):
+        CONTACTO = 'CT', 'Contacto'
+        SUSPECTO = 'SP', 'Suspecto'
+        LEAD = 'LD', 'Lead'
+        OPORTUNIDAD = 'OP', 'Oportunidad'
+        PROSPECTO = 'PR', 'Prospecto'
+        CLIENTE = 'CL', 'CLiente'
+        
     id = models.BigAutoField(primary_key=True)
     nombre = models.CharField(verbose_name="Nombre",
                               max_length=70, null=False, blank=True, unique=True)
@@ -75,6 +84,7 @@ class Tercero(models.Model):
         TipoEmpresa, on_delete=models.PROTECT, default=0, verbose_name="Tipo de empresa")
     tipo_tercero = models.ForeignKey(
         TipoTercero, on_delete=models.PROTECT, default=1, verbose_name="Tipo de tercero")
+    tipo = models.CharField(max_lenght=2, choices=Tipo.choices, default=Tipo.CONTACTO)
     vendedor = models.ForeignKey(
         Vendedor, on_delete=models.PROTECT, verbose_name="Vendedor")
     created_at = models.DateTimeField(auto_now=True)
@@ -85,6 +95,11 @@ class Tercero(models.Model):
         verbose_name = "Tercero"
         verbose_name_plural = "Terceros"
         ordering = ["nombre"]
+        indexes = [
+            models.Index(fields=[
+                "nombre"
+            ]),
+        ]
 
     def save(self, force_insert=False, force_update=False, **kwargs):
         self.nombre = self.nombre.upper()
