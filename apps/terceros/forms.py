@@ -43,9 +43,10 @@ class TipoPersonaForm(forms.ModelForm):
 class TerceroForm(forms.ModelForm):
     class Meta:
         model = Tercero
-        fields = ["tipo_tercero", "nombre", "nombre_juridico", "direccion", "rif", "nit", "telefono", "email", 'web', "tipocapital", "ciudad", "zona", "descripcion_actividad", "tamano_empresa", "tipo_empresa", "vendedor"]
+        fields = ["tipo_tercero", "tipo", "nombre", "nombre_juridico", "direccion", "rif", "nit", "telefono", "email", 'web', "tipocapital", "ciudad", "zona", "descripcion_actividad", "tamano_empresa", "tipo_empresa", "vendedor"]
         labels = {
             'tipo_tercero': 'Tipo de tercero',
+            "tipo": 'Clasificación',
             'nombre': 'Nombre',
             'nombre_juridico': 'Nombre Jurídico',
             'direccion': 'Dirección',
@@ -69,6 +70,13 @@ class TerceroForm(forms.ModelForm):
                     'class': 'form-select form-select-sm mb-2',
                     'placeholder': 'Agregue el tipo de  tercero',
                     'id': 'tipo_tercero'
+                }
+            ),
+            'tipo': forms.Select(
+                attrs={
+                    'class': 'form-select form-select-sm mb-2',
+                    'placeholder': 'Agregue la clasificación',
+                    'id': 'tipo'
                 }
             ),
             'nombre': forms.TextInput(

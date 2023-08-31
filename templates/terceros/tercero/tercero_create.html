@@ -33,6 +33,18 @@
 
                   <div class="row form-group">
                     <div class="col-sm-12 text-danger " >
+                      {{ form.tipo.errors }}
+                    </div>
+                      <div class="col-sm-12 col-md-3">
+                        {{ form.tipo.label }}
+                      </div>
+                      <div class="col-sm-12 offset-md-1 col-md-8">
+                        {{ form.tipo }}
+                      </div>
+                  </div>
+
+                  <div class="row form-group">
+                    <div class="col-sm-12 text-danger " >
                       {{ form.nombre.errors }}
                     </div>
                       <div class="col-sm-12 col-md-3">

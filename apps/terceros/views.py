@@ -195,7 +195,11 @@ def tercero_delete(request, id):
         return render(request, 'terceros/tercero/tercero_delete.html', contexto)
     else:
         try:
-            terceros.delete()
+            if terceros.tipo == 'CL':
+                terceros.tipo = 'ER'
+                terceros.save()
+            else:
+                terceros.delete()
         except:
             mensaje = 'No puede eliminar Tercero, tiene registros asociados'
             class_card = "card border-danger"

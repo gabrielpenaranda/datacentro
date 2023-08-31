@@ -19,6 +19,9 @@
                 {% csrf_token %}
                 <div class="card-body">
                   <div class="row form-group">
+                    <div class="col-sm-12 text-danger">
+                      {{ form.nombre.errors }}
+                    </div>
                       <div class="col-sm-12 col-md-3">
                         {{ form.nombre.label }}
                       </div>
@@ -27,6 +30,9 @@
                       </div>
                   </div>
                   <div class="row form-group">
+                    <div class="col-sm-12 text-danger">
+                      {{ form.apellido.errors }}
+                    </div>
                       <div class="col-sm-12 col-md-3">
                         {{ form.apellido.label }}
                       </div>
@@ -35,6 +41,9 @@
                       </div>
                   </div>
                   <div class="row form-group">
+                    <div class="col-sm-12 text-danger">
+                      {{ form.cedula.errors }}
+                    </div>
                       <div class="col-sm-12 col-md-3">
                         {{ form.cedula.label }}
                       </div>
@@ -43,14 +52,20 @@
                       </div>
                   </div>
                   <div class="row form-group">
+                    <div class="col-sm-12 text-danger">
+                      {{ form.numero_fiscal.errors }}
+                    </div>
                       <div class="col-sm-12 col-md-3">
-                        {{ form.rif.label }}
+                        {{ form.numero_fiscal.label }}
                       </div>
                       <div class="col-sm-12 offset-md-1 col-md-8">
-                        {{ form.rif }}
+                        {{ form.numero_fiscal }}
                       </div>
                   </div>
                   <div class="row form-group">
+                    <div class="col-sm-12 text-danger">
+                      {{ form.direccion.errors }}
+                    </div>
                       <div class="col-sm-12 col-md-3">
                         {{ form.direccion.label }}
                       </div>
@@ -59,6 +74,9 @@
                       </div>
                   </div>
                   <div class="row form-group">
+                    <div class="col-sm-12 text-danger">
+                      {{ form.ciudad.errors }}
+                    </div>
                       <div class="col-sm-12 col-md-3">
                         {{ form.ciudad.label }}
                       </div>
@@ -67,6 +85,9 @@
                       </div>
                   </div>
                   <div class="row form-group">
+                    <div class="col-sm-12 text-danger">
+                      {{ form.telefono.errors }}
+                    </div>
                       <div class="col-sm-12 col-md-3">
                         {{ form.telefono.label }}
                       </div>
@@ -75,6 +96,9 @@
                       </div>
                   </div>
                   <div class="row form-group">
+                    <div class="col-sm-12 text-danger">
+                      {{ form.email.errors }}
+                    </div>
                       <div class="col-sm-12 col-md-3">
                         {{ form.email.label }}
                       </div>

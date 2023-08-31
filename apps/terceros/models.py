@@ -52,7 +52,8 @@ class Tercero(models.Model):
         LEAD = 'LD', 'Lead'
         OPORTUNIDAD = 'OP', 'Oportunidad'
         PROSPECTO = 'PR', 'Prospecto'
-        CLIENTE = 'CL', 'CLiente'
+        CLIENTE = 'CL', 'Cliente'
+        EROSION = 'ER', 'Erosión'
         
     id = models.BigAutoField(primary_key=True)
     nombre = models.CharField(verbose_name="Nombre",
@@ -84,7 +85,7 @@ class Tercero(models.Model):
         TipoEmpresa, on_delete=models.PROTECT, default=0, verbose_name="Tipo de empresa")
     tipo_tercero = models.ForeignKey(
         TipoTercero, on_delete=models.PROTECT, default=1, verbose_name="Tipo de tercero")
-    tipo = models.CharField(max_lenght=2, choices=Tipo.choices, default=Tipo.CONTACTO)
+    tipo = models.CharField(max_length=2, choices=Tipo.choices, default=Tipo.CONTACTO)
     vendedor = models.ForeignKey(
         Vendedor, on_delete=models.PROTECT, verbose_name="Vendedor")
     created_at = models.DateTimeField(auto_now=True)
