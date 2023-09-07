@@ -61,7 +61,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'datacentro.urls'
+ROOT_URLCONF = 'crm.urls'
 
 TEMPLATES = [
     {
@@ -79,25 +79,25 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'datacentro.wsgi.application'
+WSGI_APPLICATION = 'crm.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #    'ENGINE': 'django.db.backends.sqlite3',
-    #    'NAME': BASE_DIR / 'crm.sqlite3',
-    # }
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'crmdb',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '3306',
+       'ENGINE': 'django.db.backends.sqlite3',
+       'NAME': BASE_DIR / 'crm.sqlite3',
     }
+    #'default': {
+    #    'ENGINE': 'django.db.backends.mysql',
+    #    'NAME': 'crmdb',
+    #    'USER': 'root',
+    #    'PASSWORD': '',
+    #    'HOST': 'localhost',
+    #    'PORT': '3306',
+    #}
 }
 
 
