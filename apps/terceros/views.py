@@ -154,10 +154,18 @@ def tipopersona_delete(request, id):
 # TERCERO
 class TerceroIndex(ListView):
     template_name = 'terceros/tercero/tercero_index.html'
-    queryset = Tercero.objects.all().select_related('ciudad').select_related('zona')
     paginate_by = 7
     context_object_name = 'terceros'
-    
+
+    def get_queryset(self):
+        palabra_clave = self.request.GET.get("kword", '')
+        if (palabra_clave):
+            terceros = Tercero.objects.filter(
+                nombre__icontains=palabra_clave
+                ).select_related('ciudad').select_related('zona')
+        else:
+            terceros = Tercero.objects.all().select_related('ciudad').select_related('zona')
+        return terceros
 
 
 class TerceroCreate(CreateView):
