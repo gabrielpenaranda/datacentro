@@ -10,7 +10,7 @@
 <div class="container mt-5">
 
     <div class="row">
-        <div class="col-12 col-sm-12 col-md-8 offset-md-2">
+        <div class="col-12 col-sm-12 col-md-10 offset-md-1">
           <div class="card">
             <div class="card-title bg-light">
               <h4 class="text-left m-4 mb-0">Tercero</h4>
@@ -31,6 +31,8 @@
                           <th scope="col" class="text-center">Clasificación</th>
                           <th scope="col" class="text-center">Zona-Region</th>
                           <th scope="col" class="text-center">Ciudad</th>
+                          <th scope="col" class="text-center">Estado</th>
+                          <th scope="col" class="text-center">País</th>
                           <th scope="col" class="text-center">Acciones</th>
                       </tr>
                   </thead>
@@ -42,14 +44,20 @@
                                   {{ tercero.nombre }}
                               </td>
                               <td class="fs-7">
-                                  {{ tercero.tipo.value }}
+                                  {{ tercero.get_tipo_display | upper }}
                               </td>
                               <td class="fs-7">
-                                  {{ tercero.zona.nombre }}-{{ tercero.zona.region.nombre }} 
+                                  {{ tercero.zona.zona }}-{{ tercero.zona.region.region }} 
                               </td>
                               <td class="fs-7">
-                                  {{ tercero.ciudad.nombre }}-{{ tercero.ciudad.estado.nombre }}-{{ tercero.ciudad.estado.pais.nombre }}
+                                  {{ tercero.ciudad.ciudad }}
                               </td>
+                              <td class="fs-7">
+                               {{ tercero.ciudad.estado.estado }}
+                            </td>
+                            <td class="fs-7">
+                                {{ tercero.ciudad.estado.pais.pais }}
+                            </td>
                               <td class="text-center">
                                   <a class="btn btn-outline-primary btn-sm fs-7" href="{% url 'terceros:tercero-edit' tercero.id %}"><i class="fas fa-edit"></i></a>
                                   <a class="btn btn-outline-danger btn-sm confirmation fs-7"  onclick="" href="{% url 'terceros:tercero-delete' tercero.id %}"><i class="fas fa-trash"></i></a>

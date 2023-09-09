@@ -33,7 +33,7 @@ class TipoTercero(models.Model):
     class Meta:
         db_table = "tipoterceros"
         verbose_name = "Tipo de tercero"
-        verbose_name_plural = "Tipo de terceros"
+        verbose_name_plural = "Tipos de terceros"
         ordering = ["descripcion"]
 
     def save(self, force_insert=False, force_update=False, **kwargs):
@@ -46,15 +46,15 @@ class TipoTercero(models.Model):
 
 class Tercero(models.Model):
     
-    class Tipo(models.TextChoices):
-        CONTACTO = 'CT', 'Contacto'
+    class ClaseTercero(models.TextChoices):
+        CONTACTO = ('CT', 'Contacto')
         SUSPECTO = 'SP', 'Suspecto'
         LEAD = 'LD', 'Lead'
         OPORTUNIDAD = 'OP', 'Oportunidad'
         PROSPECTO = 'PR', 'Prospecto'
         CLIENTE = 'CL', 'Cliente'
         EROSION = 'ER', 'Erosión'
-        
+               
     id = models.BigAutoField(primary_key=True)
     nombre = models.CharField(verbose_name="Nombre",
                               max_length=70, null=False, blank=True, unique=True)
@@ -85,7 +85,7 @@ class Tercero(models.Model):
         TipoEmpresa, on_delete=models.PROTECT, default=0, verbose_name="Tipo de empresa")
     tipo_tercero = models.ForeignKey(
         TipoTercero, on_delete=models.PROTECT, default=1, verbose_name="Tipo de tercero")
-    tipo = models.CharField(max_length=2, choices=Tipo.choices, default=Tipo.CONTACTO)
+    tipo = models.CharField(max_length=2, choices=ClaseTercero.choices, default=ClaseTercero.CONTACTO)
     vendedor = models.ForeignKey(
         Vendedor, on_delete=models.PROTECT, verbose_name="Vendedor")
     created_at = models.DateTimeField(auto_now=True)
@@ -111,7 +111,7 @@ class Tercero(models.Model):
         super(Tercero, self).save(force_insert, force_update)
 
     def __str__(self):
-        return "%s %s %s" % (self.nombre, self.rif, self.nombre_juridico)
+        return "%s %s %s %s" % (self.nombre, self.rif, self.nombre_juridico, self.tipo)
 
 
 class Persona(models.Model):

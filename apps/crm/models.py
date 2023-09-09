@@ -148,6 +148,7 @@ class Oportunidad(models.Model):
 
 
 class Documento(models.Model):
+    
     class TipoDocumento(models.TextChoices):
         PRESENTACION = "PRESENTACION"
         COTIZACION = "COTIZACIÓN"
@@ -155,7 +156,8 @@ class Documento(models.Model):
         CONTRATO = "CONTRATO"
         BROCHURE = "BROCHURE"
         CUESTIONARIO = "CUESTIONARIO"
-
+        
+       
     id = models.BigAutoField(primary_key=True)
     fecha = models.DateField(
         verbose_name="Fecha de documento", auto_now=False, auto_now_add=False)

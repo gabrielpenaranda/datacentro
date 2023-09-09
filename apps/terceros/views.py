@@ -1,3 +1,5 @@
+from typing import Any
+from django.db.models.query import QuerySet
 from django.shortcuts import render
 from .models import (
     TipoTercero, TipoPersona, Tercero, Persona, Sucursal
@@ -152,9 +154,10 @@ def tipopersona_delete(request, id):
 # TERCERO
 class TerceroIndex(ListView):
     template_name = 'terceros/tercero/tercero_index.html'
-    model = Tercero
+    queryset = Tercero.objects.all().select_related('ciudad').select_related('zona')
     paginate_by = 7
     context_object_name = 'terceros'
+    
 
 
 class TerceroCreate(CreateView):
