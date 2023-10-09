@@ -1,5 +1,6 @@
 from django.db import models
 from ..base.models import Ciudad, TipoCapital, Zona, Vendedor, TipoEmpresa, TamanoEmpresa
+from .managers import TerceroManager
 
 
 class TipoPersona(models.Model):
@@ -47,13 +48,13 @@ class TipoTercero(models.Model):
 class Tercero(models.Model):
     
     class ClaseTercero(models.TextChoices):
-        CONTACTO = ('CT', 'Contacto')
-        SUSPECTO = 'SP', 'Suspecto'
-        LEAD = 'LD', 'Lead'
-        OPORTUNIDAD = 'OP', 'Oportunidad'
-        PROSPECTO = 'PR', 'Prospecto'
-        CLIENTE = 'CL', 'Cliente'
-        EROSION = 'ER', 'Erosión'
+        CONTACTO = 'contacto', 'Contacto'
+        SUSPECTO = 'suspecto', 'Suspecto'
+        LEAD = 'lead', 'Lead'
+        OPORTUNIDAD = 'oportunidad', 'Oportunidad'
+        PROSPECTO = 'prospecto', 'Prospecto'
+        CLIENTE = 'cliente', 'Cliente'
+        EROSION = 'erosion', 'Erosión'
                
     id = models.BigAutoField(primary_key=True)
     nombre = models.CharField(verbose_name="Nombre",
@@ -85,9 +86,10 @@ class Tercero(models.Model):
         TipoEmpresa, on_delete=models.PROTECT, default=0, verbose_name="Tipo de empresa")
     tipo_tercero = models.ForeignKey(
         TipoTercero, on_delete=models.PROTECT, default=1, verbose_name="Tipo de tercero")
-    tipo = models.CharField(max_length=2, choices=ClaseTercero.choices, default=ClaseTercero.CONTACTO)
+    tipo = models.CharField(max_length=12, choices=ClaseTercero.choices, default=ClaseTercero.CONTACTO)
     vendedor = models.ForeignKey(
         Vendedor, on_delete=models.PROTECT, verbose_name="Vendedor")
+    objects = TerceroManager()
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now_add=True)
 
