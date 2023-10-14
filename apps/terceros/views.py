@@ -159,7 +159,8 @@ class TerceroIndex(ListView):
 
     def get_queryset(self):
         palabra_clave = self.request.GET.get("kword", '').lower()
-        print(palabra_clave)
+        filtro = self.request.GET.get('key', '').lower()
+        
         if (palabra_clave):
             terceros = Tercero.objects.buscar_tercero(palabra_clave).select_related('ciudad').select_related('zona')
         else:

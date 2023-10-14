@@ -74,7 +74,7 @@ class Tercero(models.Model):
     tipocapital = models.ForeignKey(
         TipoCapital, on_delete=models.PROTECT, verbose_name="Tipo de capital")
     ciudad = models.ForeignKey(
-        Ciudad, on_delete=models.PROTECT, verbose_name="Ciudad")
+        Ciudad, on_delete=models.PROTECT, verbose_name="Ciudad", related_name='tercero_ciudad')
     zona = models.ForeignKey(
         Zona, on_delete=models.PROTECT, verbose_name="Zona")
     """ ramo = models.ForeignKey(Ramo, on_delete=models.PROTECT, default=0, verbose_name="Ramo") """
