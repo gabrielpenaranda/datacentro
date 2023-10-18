@@ -1,6 +1,13 @@
 from typing import Any
 from django.db.models.query import QuerySet
 from django.shortcuts import render
+
+from django.core.paginator import InvalidPage
+from django.http import Http404, HttpResponse
+from django.utils.translation import gettext as _
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from http import cookies
+
 from .models import (
     TipoTercero, TipoPersona, Tercero, Persona, Sucursal
 )
@@ -154,17 +161,50 @@ def tipopersona_delete(request, id):
 # TERCERO
 class TerceroIndex(ListView):
     template_name = 'terceros/tercero/tercero_index.html'
-    paginate_by = 7
+    paginate_by = 10
     context_object_name = 'terceros'
+
+
+    """ def get(self, request, *args, **kwargs):
+        print('culo')
+        response = super().get(request, *args, **kwargs)       
+        return response """
+
 
     def get_queryset(self):
         palabra_clave = self.request.GET.get("kword", '').lower()
-        filtro = self.request.GET.get('key', '').lower()
+        orderby = self.request.GET.get('orderby', '').lower()
+        ascdesc = self.request.GET.get('ascdesc', '').lower()
+        page_size = self.request.GET.get('page_size', '')
         
-        if (palabra_clave):
-            terceros = Tercero.objects.buscar_tercero(palabra_clave).select_related('ciudad').select_related('zona')
+        page = self.request.GET.get('page')
+        print(f'page {page}')
+
+        if ascdesc == 'desc':
+            order = '-' + orderby
+        elif ascdesc == 'asc':
+            order = orderby
+        elif not ascdesc:
+            order = 'nombre'
+        
+        
+        if page_size == '':
+            page_size = 10
         else:
-            terceros = Tercero.objects.all().select_related('ciudad').select_related('zona')
+            print(self.paginate_by)
+            page_size = int(page_size)
+            
+
+        print(f'{palabra_clave}, {orderby}, {ascdesc}, {order}, {page_size}')
+
+        if (palabra_clave):
+            self.paginate_by = page_size
+            terceros = Tercero.objects.buscar_tercero(palabra_clave, orderby, ascdesc)
+        else:
+            self.paginate_by = page_size
+            terceros = Tercero.objects.all().select_related('ciudad').select_related('zona').order_by(order)
+
+        print(terceros)
         return terceros
 
 

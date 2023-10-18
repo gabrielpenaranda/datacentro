@@ -96,17 +96,19 @@ class Pais(models.Model):
     id = models.BigAutoField(primary_key=True)
     pais = models.CharField(
         verbose_name="Nombre", max_length=50, null=False, blank=False)
+    iso = models.CharField(max_length=2, null=False, blank=False)
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         db_table = "paises"
-        verbose_name = "Pais"
-        verbose_name_plural = "Paises"
+        verbose_name = "País"
+        verbose_name_plural = "Países"
         ordering = ["pais"]
         
     def save(self, force_insert=False, force_update=False):
         self.pais = self.pais.upper()
+        self.iso = self.iso.upper()
         super(Pais, self).save(force_insert, force_update)
 
     def __str__(self):
@@ -258,7 +260,7 @@ class Zona(models.Model):
         super(Zona, self).save(force_insert, force_update)
 
     def __str__(self):
-        return "%s - %s" % (self.region, self.zona)
+        return "%s - %s" % (self.zona, self.region)
 
 
 class TamanoEmpresa(models.Model):
