@@ -165,46 +165,27 @@ class TerceroIndex(ListView):
     context_object_name = 'terceros'
 
 
-    """ def get(self, request, *args, **kwargs):
-        print('culo')
-        response = super().get(request, *args, **kwargs)       
-        return response """
-
-
     def get_queryset(self):
         palabra_clave = self.request.GET.get("kword", '').lower()
         orderby = self.request.GET.get('orderby', '').lower()
         ascdesc = self.request.GET.get('ascdesc', '').lower()
-        page_size = self.request.GET.get('page_size', '')
-        
-        page = self.request.GET.get('page')
-        print(f'page {page}')
-
-        if ascdesc == 'desc':
-            order = '-' + orderby
-        elif ascdesc == 'asc':
-            order = orderby
-        elif not ascdesc:
-            order = 'nombre'
-        
-        
-        if page_size == '':
+        # page_size = self.request.GET.get('page_size', '')
+                        
+        """ if page_size == '':
             page_size = 10
         else:
-            print(self.paginate_by)
-            page_size = int(page_size)
-            
+            page_size = int(page_size) """
 
-        print(f'{palabra_clave}, {orderby}, {ascdesc}, {order}, {page_size}')
+        # print(f'{palabra_clave}, {orderby}, {ascdesc}, {order}, {page_size}')
 
+        # self.paginate_by = page_size
+        
         if (palabra_clave):
-            self.paginate_by = page_size
             terceros = Tercero.objects.buscar_tercero(palabra_clave, orderby, ascdesc)
         else:
-            self.paginate_by = page_size
-            terceros = Tercero.objects.all().select_related('ciudad').select_related('zona').order_by(order)
-
-        print(terceros)
+            # terceros = Tercero.objects.all().select_related('ciudad').select_related('zona').order_by(order)
+            terceros = Tercero.objects.todos_tercero(orderby, ascdesc)
+            
         return terceros
 
 
@@ -275,9 +256,40 @@ def tercero_delete(request, id):
 # PERSONA
 class PersonaIndex(ListView):
     template_name = 'terceros/persona/persona_index.html'
-    model = Persona
-    paginate_by = 7
+    # model = Persona
+    paginate_by = 10
     context_object_name = 'personas'
+    
+    
+    def get_queryset(self):
+        palabra_clave = self.request.GET.get("kword", '').lower()
+        orderby = self.request.GET.get('orderby', '').lower()
+        ascdesc = self.request.GET.get('ascdesc', '').lower()
+        # page_size = self.request.GET.get('page_size', '')
+        
+        if ascdesc == 'desc':
+            order = '-' + orderby
+        elif ascdesc == 'asc':
+            order = orderby
+        elif not ascdesc:
+            order = 'nombre'
+                
+        """ if page_size == '':
+            page_size = 10
+        else:
+            page_size = int(page_size) """
+
+        # print(f'{palabra_clave}, {orderby}, {ascdesc}, {order}, {page_size}')
+
+        # self.paginate_by = page_size
+        
+        if (palabra_clave):
+            terceros = Tercero.objects.buscar_tercero(palabra_clave, orderby, ascdesc)
+        else:
+            # terceros = Tercero.objects.all().select_related('ciudad').select_related('zona').order_by(order)
+            terceros = Tercero.objects.todos_tercero(orderby, ascdesc)
+            
+        return terceros
 
 
 class PersonaCreate(CreateView):

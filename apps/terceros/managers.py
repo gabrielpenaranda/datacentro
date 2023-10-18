@@ -24,7 +24,7 @@ class TerceroManager(models.Manager):
         return resultado
     
     
-    def todos_tercero(self, kword, orderby, ascdesc):
+    def todos_tercero(self, orderby, ascdesc):
         
         if ascdesc == 'desc':
             order = '-' + orderby
@@ -33,4 +33,6 @@ class TerceroManager(models.Manager):
         elif not ascdesc:
             order = 'nombre'
 
-        resultado = self.objects.all().order_by(order).select_related('ciudad').select_related('zona')
+        resultado = self.all().select_related('ciudad').select_related('zona').order_by(order)
+        
+        return resultado
