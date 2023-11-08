@@ -2,11 +2,15 @@ from typing import Any
 from django.db.models.query import QuerySet
 from django.shortcuts import render
 
+from django.views.decorators.http import require_http_methods
+
 from django.core.paginator import InvalidPage
 from django.http import Http404, HttpResponse
 from django.utils.translation import gettext as _
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from http import cookies
+
+from django.core.cache import cache
 
 from .models import (
     TipoTercero, TipoPersona, Tercero, Persona, Sucursal
@@ -159,33 +163,87 @@ def tipopersona_delete(request, id):
 
 
 # TERCERO
+@require_http_methods(["GET", "POST"])
+def tercero_index(request):
+    page_num = request.GET.get('page', 1)
+    
+    if request.method == 'GET':
+        orderby = 'nombre'
+        ascdesc = 'asc'
+        resultado = Tercero.objects.todos_tercero(orderby, ascdesc)
+        page_size = 5
+        paginator = Paginator(resultado, page_size)
+    elif request.method == 'POST':
+        palabra_clave = request.GET.get("kword", '').lower()
+        orderby = request.GET.get('orderby', '').lower()
+        ascdesc = request.GET.get('ascdesc', '').lower()
+        page_size = request.GET.get('page_size', '')
+        
+        # del resultado
+                        
+        if page_size == '':
+            page_size = 10
+        else:
+            page_size = int(page_size)
+            
+        if (palabra_clave):
+            resultado = Tercero.objects.buscar_tercero(palabra_clave, orderby, ascdesc)
+        else:
+            # terceros = Tercero.objects.all().select_related('ciudad').select_related('zona').order_by(order)
+            resultado = Tercero.objects.todos_tercero(orderby, ascdesc)
+        paginator = Paginator(resultado, page_size)
+        
+    
+    print(resultado)
+    
+    try:
+        terceros = paginator.page(page_num)
+    except PageNotAnInteger:
+        terceros = paginator.page(1)
+    except EmptyPage:
+        terceros = paginator.page(paginator.num_pages)
+        
+    return render(request, 'terceros/tercero/tercero_index.html', {'terceros': terceros})
+    
+
+
 class TerceroIndex(ListView):
     template_name = 'terceros/tercero/tercero_index.html'
-    paginate_by = 10
+    paginate_by = None
     context_object_name = 'terceros'
 
-
-    def get_queryset(self):
+    def dispatch(self, request, *args, **kwargs):
+        try:
+            if (self.object_list):
+                del self.object_list
+        except:
+            print('algo')
+        return super().dispatch(request, *args, **kwargs)
+    
+   
+    def get_queryset(self):       
+        
         palabra_clave = self.request.GET.get("kword", '').lower()
         orderby = self.request.GET.get('orderby', '').lower()
         ascdesc = self.request.GET.get('ascdesc', '').lower()
-        # page_size = self.request.GET.get('page_size', '')
+        page_size = self.request.GET.get('page_size', '')
                         
-        """ if page_size == '':
+        if page_size == '':
             page_size = 10
         else:
-            page_size = int(page_size) """
+            page_size = int(page_size)
 
         # print(f'{palabra_clave}, {orderby}, {ascdesc}, {order}, {page_size}')
-
-        # self.paginate_by = page_size
+        self.paginate_by = page_size
         
         if (palabra_clave):
             terceros = Tercero.objects.buscar_tercero(palabra_clave, orderby, ascdesc)
         else:
             # terceros = Tercero.objects.all().select_related('ciudad').select_related('zona').order_by(order)
             terceros = Tercero.objects.todos_tercero(orderby, ascdesc)
-            
+         
+        print(terceros)           
+                       
         return terceros
 
 

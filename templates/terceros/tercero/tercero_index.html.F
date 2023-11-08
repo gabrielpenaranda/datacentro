@@ -21,7 +21,9 @@
               </div>
             </div>
             <div class="container">
-              <form method="GET" action="{% url 'terceros:tercero-index' %}">
+              <form method="POST" action="{% url 'terceros:tercero-index' %}">
+
+                {% csrf_token %}
                 
                 <div class="row">
 
@@ -107,42 +109,42 @@
 
           <div class="card-footer">
             <nav aria-label="Page navigation example">
-              {% if is_paginated %}
-                <ul class="pagination mb-0">
-                  {% if page_obj.has_previous %}
+              <ul class="pagination mb-0">
+                {% if terceros.has_previous %}
+                  <li class="page-item">
+                    <a class="page-link" href="?page={{ terceros.previous_page_number }}"><span aria-hidden="true">&laquo;</span></a>
+                  </li>
+                  {% comment %}
+                {% else %}
+                  <li class="page-item">
+                    <span>&laquo;</span>
+                  </li> {% endcomment %}
+                {% endif %}
+                {% for i in terceros.page_range %}
+                  {% if page_obj.number == i %}
                     <li class="page-item">
-                      <a class="page-link" href="?page={{ page_obj.previous_page_number }}"><span aria-hidden="true">&laquo;</span></a>
+                      <span class="page-link text-danger">{{ i }} <span class="sr-only"></span></span>
                     </li>
-                    {% comment %}
                   {% else %}
                     <li class="page-item">
-                      <span>&laquo;</span>
-                    </li> {% endcomment %}
-                  {% endif %}
-                  {% for i in paginator.page_range %}
-                    {% if page_obj.number == i %}
-                      <li class="page-item">
-                        <span class="page-link text-danger">{{ i }} <span class="sr-only"></span></span>
-                      </li>
-                    {% else %}
-                      <li class="page-item">
-                        <a class="page-link" href="?page={{ i }}">{{ i }}</a>
-                      </li>
-                    {% endif %}
-                  {% endfor %}
-                  {% if page_obj.has_next %}
-                    <li class="page-item">
-                      <a class="page-link" href="?page={{ page_obj.next_page_number }}"><span aria-hidden="true">&raquo;</span></a>
+                      <a class="page-link" href="?page={{ i }}">{{ i }}</a>
                     </li>
-                    {% comment %}
-                  {% else %}
-                    <li class="page-item">
-                      <span>&raquo;</span>
-                    </li> {% endcomment %}
                   {% endif %}
+                {% endfor %}
+                {% if terceros.has_next %}
+                  <li class="page-item">
+                    <a class="page-link" href="?page={{ terceros.next_page_number }}"><span aria-hidden="true">&raquo;</span></a>
+                  </li>
+                  {% comment %}
+                {% else %}
+                  <li class="page-item">
+                    <span>&raquo;</span>
+                  </li> {% endcomment %}
+                {% endif %}
 
-                </ul>
-              {% endif %}
+              </ul>
+              {% comment %} {% if is_paginated %}
+              {% endif %} {% endcomment %}
             </nav>
           </div>
         </div>

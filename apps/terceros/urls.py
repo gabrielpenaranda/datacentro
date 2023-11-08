@@ -3,6 +3,7 @@ from django.urls import path, include
 from .views import (
     TipoTerceroIndex, TipoTerceroCreate, TipoTerceroEdit, tipotercero_delete,
     TipoPersonaIndex, TipoPersonaCreate, TipoPersonaEdit, tipopersona_delete,
+    tercero_index,
     TerceroIndex, TerceroCreate, TerceroEdit, tercero_delete,
     PersonaIndex, PersonaCreate, PersonaEdit, persona_delete,
     SucursalIndex, SucursalCreate, SucursalEdit, sucursal_delete,
@@ -28,6 +29,8 @@ urlpatterns = [
          tipopersona_delete, name='tipopersona-delete'),
     #
     path('tercero', TerceroIndex.as_view(), name='tercero-index'),
+    #path('tercero/',
+    #    tercero_index, name='tercero-index'),
     path('tercero/create', TerceroCreate.as_view(),
          name='tercero-create'),
     path('tercero/edit/<int:pk>',
