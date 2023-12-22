@@ -242,7 +242,21 @@ class TerceroIndex(ListView):
             # terceros = Tercero.objects.all().select_related('ciudad').select_related('zona').order_by(order)
             terceros = Tercero.objects.todos_tercero(orderby, ascdesc)
          
-        print(terceros)           
+        print(terceros)
+        
+        """
+        terceros = self.paginate_queryset(terceros1, page_size)
+        print('******************************************************')
+        print(terceros)
+        i = 0
+        pag = []
+        for p in terceros:
+            print('+=========================================================+')
+            pag.append(p)
+            print(p)
+            print(pag[i])
+            i = i + 1
+        """"
                        
         return terceros
 
