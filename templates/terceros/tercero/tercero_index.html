@@ -52,11 +52,11 @@
                     
                     <div class="col-2">
                       <label for="page_size" class="form-label fs-7">Por página:</label>
-                      <select name="page_size" id="page_size" class="form-select fs-7">
-                        <option value="5">5</option>
-                        <option value="10">10</option>
-                        <option value="25">25</option>
-                        <option value="50">50</option>
+                      <select name="page_size" id="page_size" class="form-select fs-7">P
+                        <option value="5" {% if request.session.page_size == 5 %}selected{% endif %}>5</option>
+                        <option value="10" {% if request.session.page_size == 10 %}selected{% endif %}>10</option>
+                        <option value="20" {% if request.session.page_size == 20 %}selected{% endif %}>20</option>
+                        <option value="50" {% if request.session.page_size == 50 %}selected{% endif %}>50</option>
                       </select>
                     </div>
                    

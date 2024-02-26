@@ -17,7 +17,7 @@ class TerceroManager(models.Manager):
             Q(ciudad__ciudad__icontains=kword) | 
             Q(ciudad__estado__estado__icontains=kword) |
             Q(ciudad__estado__pais__pais__icontains=kword) |
-            Q(zona__zona__icontains=kword) |
+            Q(zona__zona__zona__icontains=kword) |
             Q(zona__region__region__icontains=kword)
         ).order_by(order).select_related('ciudad').select_related('zona')
 

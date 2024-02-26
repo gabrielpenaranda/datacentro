@@ -223,16 +223,27 @@ class TerceroIndex(ListView):
    
     def get_queryset(self):       
         
+        if not self.request.session.get('page_size'):
+            self.request.session['page_size'] = 10
+        
+        print(self.request.session['page_size'])
+        
+        if self.request.method == 'GET' and 'page_size' in self.request.GET:
+            self.request.session['page_size'] = int(self.request.GET['page_size'])
+            
         palabra_clave = self.request.GET.get("kword", '').lower()
         orderby = self.request.GET.get('orderby', '').lower()
         ascdesc = self.request.GET.get('ascdesc', '').lower()
-        page_size = self.request.GET.get('page_size', '')
-                        
-        if page_size == '':
-            page_size = 10
+        
+        page_size = self.request.session['page_size']
+        
+        """               
+        if page_size:
+            print(page_size)
+            self.num_pagina = int(page_size)
         else:
-            page_size = int(page_size)
-
+            self.num_pagina = 10
+        """
         # print(f'{palabra_clave}, {orderby}, {ascdesc}, {order}, {page_size}')
         self.paginate_by = page_size
         
@@ -256,9 +267,10 @@ class TerceroIndex(ListView):
             print(p)
             print(pag[i])
             i = i + 1
-        """"
+        """
                        
         return terceros
+    
 
 
 class TerceroCreate(CreateView):

@@ -11,10 +11,10 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-import pymysql
+# import pymysql
 
-pymysql.install_as_MySQLdb()
-pymysql.version_info = (1, 4, 3, "final", 0)
+# pymysql.install_as_MySQLdb()
+# pymysql.version_info = (1, 4, 3, "final", 0)
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -191,5 +191,6 @@ DEBUG_TOOLBAR_PANELS = [
     'debug_toolbar.panels.profiling.ProfilingPanel',
 ]
 
-
+# SESION
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
